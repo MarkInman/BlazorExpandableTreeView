@@ -1,0 +1,97 @@
+﻿@page "/"
+
+@using RecursiveTreeViewExample.Components.Recursion
+
+<PageTitle>Recursive TreeView</PageTitle>
+
+<h1>Node selected is '@_selectedNodeText'</h1>
+
+<TreeView TreeNode="_rootNode" OnChildNodeClicked="ChildNodeSelected" />
+
+@code {
+
+    private TreeNodeViewModel _rootNode = new();
+    private string _selectedNodeText = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        BindTree();
+    }
+
+    private void BindTree()
+    {
+        _rootNode = new TreeNodeViewModel()
+            {
+                TreeNodeId = 1,
+                LinkText = "<ROOT>",
+                Nodes = {
+                        new TreeNodeViewModel()
+                        {
+                            TreeNodeId = 2,
+                            LinkText = "HEADING 1",
+                            Nodes = {
+                                new TreeNodeViewModel() {
+                                    TreeNodeId = 3,
+                                    LinkText = "SubHeading 1.1"
+                                }
+                            }
+                        },
+                        new TreeNodeViewModel()
+                        {
+                            TreeNodeId = 4,
+                            LinkText = "HEADING 2",
+                            Nodes = {
+                                new TreeNodeViewModel() {
+                                    TreeNodeId = 5,
+                                    LinkText = "SubHeading 2.1",
+                                    Nodes = {
+                                        new TreeNodeViewModel() {
+                                            TreeNodeId = 6,
+                                            LinkText = "article 2.1.1"
+                                        },
+                                        new TreeNodeViewModel() {
+                                            TreeNodeId = 7,
+                                            LinkText = "article 2.1.2"
+                                        },
+                                        new TreeNodeViewModel() {
+                                            TreeNodeId = 8,
+                                            LinkText = "article 2.1.3"
+                                        }
+                                    }
+                                },
+                                new TreeNodeViewModel() {
+                                    TreeNodeId = 9,
+                                    LinkText = "SubHeading 2.2",
+                                    Nodes = {
+                                        new TreeNodeViewModel() {
+                                            TreeNodeId = 10,
+                                            LinkText = "article 2.2.1",
+                                            Nodes = {
+                                                new TreeNodeViewModel() {
+                                                    TreeNodeId = 11,
+                                                    LinkText = "article 2.2.1.1"
+                                                },
+                                                new TreeNodeViewModel() {
+                                                    TreeNodeId = 17,
+                                                    LinkText = "article 2.2.1.2"
+                                                },
+                                                new TreeNodeViewModel() {
+                                                    TreeNodeId = 18,
+                                                    LinkText = "article 2.2.1.3"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+            };
+    }
+
+    private void ChildNodeSelected(TreeNodeViewModel node)
+    {
+        _selectedNodeText = node.LinkText;
+    }
+
+}

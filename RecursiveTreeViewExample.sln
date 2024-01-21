@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecursiveTreeViewExample", "RecursiveTreeViewExample\RecursiveTreeViewExample.csproj", "{5C941A86-8294-4117-9AA2-008EE361D687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C941A86-8294-4117-9AA2-008EE361D687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C941A86-8294-4117-9AA2-008EE361D687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C941A86-8294-4117-9AA2-008EE361D687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C941A86-8294-4117-9AA2-008EE361D687}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1E48098-C843-41F7-8B2C-9A5297CCB8E4}
+	EndGlobalSection
+EndGlobal

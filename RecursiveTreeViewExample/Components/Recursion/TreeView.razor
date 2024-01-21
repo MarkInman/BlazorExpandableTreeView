@@ -1,0 +1,57 @@
+﻿@using System.Diagnostics
+
+<ul>
+    <li class="treeview-node">
+
+        <a @onclick="() => OnCurrentNodeClicked(TreeNode)">
+            @DisplayIcon()
+            @TreeNode.LinkText
+        </a>
+
+        @if (_isExpanded)
+        {
+            @foreach (TreeNodeViewModel childNode in TreeNode.Nodes)
+            {
+                <TreeView TreeNode="childNode" OnChildNodeClicked="ChildNodeClicked" />
+            }
+        }
+    </li>
+</ul>
+
+
+@code {
+    [Parameter]
+    public TreeNodeViewModel TreeNode { get; set; } = new TreeNodeViewModel();
+
+    [Parameter]
+    public EventCallback<TreeNodeViewModel> OnChildNodeClicked { get; set; }
+
+    private bool _isExpanded;
+
+    // This is the method that is called when the current component is clicked.
+    private void OnCurrentNodeClicked(TreeNodeViewModel node)
+    {
+        Debug.WriteLine($"[OnCurrentNodeClicked] - {TreeNode.LinkText} says 'You clicked on '{node.LinkText}");
+
+        _isExpanded = !_isExpanded;
+        OnChildNodeClicked.InvokeAsync(node);
+    }
+
+    // This is the method that is called when the first CHILD component is clicked.
+    private void ChildNodeClicked(TreeNodeViewModel childNode)
+    {
+        Debug.WriteLine($"[ChildNodeClicked] - {TreeNode.LinkText} says 'You clicked on '{childNode.LinkText}");
+        OnChildNodeClicked.InvokeAsync(childNode);
+    }
+
+    private string DisplayIcon()
+    {
+        if (!TreeNode.Nodes.Any())
+        {
+            return "";
+        }
+
+        return _isExpanded ? "-" : "+";
+    }
+
+}
