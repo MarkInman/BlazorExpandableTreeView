@@ -36,7 +36,7 @@ h1:focus {
     margin: 1em;
     padding: 0.3em;
     font-family: 'Segoe UI';
-    /*border: dotted 1px #ccc;*/
+    border: dotted 1px #ccc;
 }
 
     .treeview-node .node-selected {
